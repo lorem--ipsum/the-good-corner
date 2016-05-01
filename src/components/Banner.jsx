@@ -4,7 +4,7 @@ export default class Banner extends React.Component {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: true
     };
   }
 
@@ -34,8 +34,8 @@ export default class Banner extends React.Component {
           <textarea></textarea>
           <div className="row buttons">
             <div className="col-100 right">
-              <button className="secondary">Cancel</button>
-              <button className="primary">Save</button>
+              <button className="secondary light">Cancel</button>
+              <button className="primary light">Save</button>
             </div>
           </div>
         </div>

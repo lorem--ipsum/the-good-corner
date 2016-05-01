@@ -12,6 +12,7 @@
   .drawer {
     overflow: hidden;
     @include animate(height, padding);
+    border-bottom: 3px solid $primary;
 
     &.closed {
       height: 0px;
@@ -19,13 +20,20 @@
     }
 
     &.open {
-      height: 170px;
+      height: 190px;
       padding: 10px;
     }
 
     textarea {
       width: 100%;
       height: 120px;
+    }
+
+    .buttons {
+      margin-top: 5px;
+      button {
+        font-size: 1em;
+      }
     }
   }
 }

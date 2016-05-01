@@ -282,7 +282,7 @@ var Banner = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Banner).call(this, props));
 
     _this.state = {
-      isOpen: false
+      isOpen: true
     };
     return _this;
   }
@@ -333,12 +333,12 @@ var Banner = function (_React$Component) {
               { className: 'col-100 right' },
               _react2.default.createElement(
                 'button',
-                { className: 'secondary' },
+                { className: 'secondary light' },
                 'Cancel'
               ),
               _react2.default.createElement(
                 'button',
-                { className: 'primary' },
+                { className: 'primary light' },
                 'Save'
               )
             )

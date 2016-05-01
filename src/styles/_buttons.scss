@@ -18,4 +18,15 @@ button {
       background-color: white;
     }
   }
+
+  &.secondary {
+    border: 1px solid hsla(0, 0%, 65%, 1.00);
+    background-color: hsla(0, 0%, 65%, 1.00);
+    color: white;
+
+    &:hover {
+      color: hsla(0, 0%, 65%, 1.00);
+      background-color: white;
+    }
+  }
 }
