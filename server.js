@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 var iconv  = require('iconv-lite');
 var app = express();
 
+var port = process.env.PORT || 8080;
+
 var moment = require('moment');
     moment.locale('fr', {
       months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
@@ -80,7 +82,6 @@ var getDetailPromiseForId = function(url) {
   var deferred = q.defer();
 
   if (detailedCache[url] !== undefined) {
-    // setTimeout(function() {deferred.resolve();}, 1);
     return detailedCache[url];
   }
 
@@ -194,9 +195,9 @@ app.post('/details', function(req, res) {
 
 });
 
-app.listen('8081');
+app.listen(port);
 
-console.log('Magic happens on port 8081');
+console.log('Magic happens on port ' + port);
 
 exports = module.exports = app;
 
