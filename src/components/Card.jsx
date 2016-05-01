@@ -32,7 +32,7 @@ export default class Card extends React.Component {
           <div className="col-80 infos">
             <div className="row">
               <div className="col-50">
-                <div className="location">{item.location}</div>
+                <div className="location">{item.address || item.location}</div>
               </div>
               <div className="col-50 right">
                 <div className="last-update">

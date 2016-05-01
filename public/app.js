@@ -204,16 +204,49 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'queriesChanged',
     value: function queriesChanged(queries) {
-      this.setState({ queries: queries }, this.loadData);
+      this.setState({ queries: queries }, this.loadSummaryData);
     }
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.loadData();
+      this.loadSummaryData();
     }
   }, {
-    key: 'loadData',
-    value: function loadData(queries) {
+    key: 'loadDetailsData',
+    value: function loadDetailsData() {
+      var items = this.state.items;
+
+      if (!items || items.length === 0) {
+        return;
+      }
+
+      var urls = items.map(function (item) {
+        return item.url;
+      }).slice(0, 5);
+
+      var that = this;
+
+      _qwest2.default.post('/details', { urls: urls }).then(function (xhr, response) {
+        console.log(response);
+        var itemsByUrl = {};
+        response.data.forEach(function (item) {
+          itemsByUrl[item.url] = item;
+        });
+
+        var newItems = that.state.items.map(function (item) {
+          if (itemsByUrl[item.url]) {
+            item.address = itemsByUrl[item.url].address;
+          }
+          return item;
+        });
+
+        console.log(newItems);
+        that.setState({ items: newItems });
+      });
+    }
+  }, {
+    key: 'loadSummaryData',
+    value: function loadSummaryData() {
       this.setState({ isLoading: true });
 
       var queries = this.state.queries;
@@ -225,7 +258,7 @@ var App = function (_React$Component) {
 
       var that = this;
 
-      _qwest2.default.post('/results', { queries: queries }).then(function (xhr, response) {
+      _qwest2.default.post('/summaries', { urls: queries }).then(function (xhr, response) {
         that.setState({
           isLoading: false,
           items: response.data.reduce(function (a, b) {
@@ -236,7 +269,7 @@ var App = function (_React$Component) {
           }).sort(function (a, b) {
             return b.lastUpdate.date.getTime() - a.lastUpdate.date.getTime();
           })
-        });
+        }, that.loadDetailsData.bind(that));
       });
     }
   }, {
@@ -253,7 +286,8 @@ var App = function (_React$Component) {
             'div',
             { className: 'prout' },
             this.state.items.map(function (item, i) {
-              return _react2.default.createElement(_Card2.default, { item: item, key: item.id });
+              console.log(item.address);
+              return _react2.default.createElement(_Card2.default, { item: item, key: item.id + item.address });
             })
           )
         ),
@@ -489,7 +523,7 @@ var Card = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'location' },
-                  item.location
+                  item.address || item.location
                 )
               ),
               _react2.default.createElement(

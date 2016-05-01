@@ -18,14 +18,44 @@ export default class App extends React.Component {
   }
 
   queriesChanged(queries) {
-    this.setState({queries: queries}, this.loadData);
+    this.setState({queries: queries}, this.loadSummaryData);
   }
 
   componentDidMount() {
-    this.loadData();
+    this.loadSummaryData();
   }
 
-  loadData(queries) {
+  loadDetailsData() {
+    var items = this.state.items;
+
+    if (!items || items.length === 0) {
+      return;
+    }
+
+    var urls = items.map(function(item) {return item.url;}).slice(0, 5);
+
+    var that = this;
+
+    qwest.post('/details', {urls: urls}).then(function(xhr, response) {
+      console.log(response);
+      var itemsByUrl = {};
+      response.data.forEach(function(item) {
+        itemsByUrl[item.url] = item;
+      });
+
+      var newItems = that.state.items.map(function(item) {
+        if (itemsByUrl[item.url]) {
+          item.address = itemsByUrl[item.url].address;
+        }
+        return item;
+      });
+
+      console.log(newItems);
+      that.setState({items: newItems});
+    });
+  }
+
+  loadSummaryData() {
     this.setState({isLoading: true});
 
     var queries = this.state.queries;
@@ -37,7 +67,7 @@ export default class App extends React.Component {
 
     var that = this;
 
-    qwest.post('/results', {queries: queries}).then(function(xhr, response) {
+    qwest.post('/summaries', {urls: queries}).then(function(xhr, response) {
       that.setState({
         isLoading: false,
         items: response.data
@@ -47,7 +77,7 @@ export default class App extends React.Component {
             return item;
           })
           .sort(function(a, b) { return b.lastUpdate.date.getTime() - a.lastUpdate.date.getTime(); })
-      });
+      }, that.loadDetailsData.bind(that));
     });
   }
 
@@ -58,7 +88,8 @@ export default class App extends React.Component {
         <div className="items">
           <div className="prout">
             { this.state.items.map(function(item, i) {
-                return <Card item={item} key={item.id}></Card>
+                console.log(item.address);
+                return <Card item={item} key={item.id + item.address}></Card>
             }) }
           </div>
         </div>
