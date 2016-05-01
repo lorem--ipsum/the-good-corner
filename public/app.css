@@ -1,0 +1,483 @@
+/* line 1, /Users/zub/Projects/the-good-corner/src/styles/application.scss */
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+/* line 6, /Users/zub/Projects/the-good-corner/src/styles/application.scss */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
+
+/* line 1, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+.row {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-0 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 0%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-0.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-0.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-0.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-0.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-0.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-0.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-0.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-10 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 10%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-10.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-10.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-10.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-10.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-10.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-10.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-10.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-20 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 20%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-20.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-20.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-20.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-20.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-20.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-20.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-20.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-30 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 30%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-30.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-30.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-30.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-30.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-30.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-30.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-30.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-40 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 40%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-40.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-40.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-40.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-40.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-40.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-40.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-40.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-50 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 50%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-50.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-50.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-50.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-50.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-50.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-50.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-50.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-60 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 60%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-60.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-60.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-60.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-60.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-60.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-60.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-60.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-70 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 70%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-70.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-70.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-70.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-70.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-70.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-70.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-70.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-80 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 80%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-80.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-80.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-80.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-80.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-80.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-80.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-80.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-90 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 90%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-90.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-90.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-90.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-90.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-90.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-90.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-90.stretch {
+      align-self: stretch; }
+  /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+  .row .col-100 {
+    flex: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    position: relative;
+    flex-basis: 100%; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-100.left {
+      text-align: left; }
+    /* line 20, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-100.right {
+      text-align: right; }
+    /* line 24, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-100.center {
+      text-align: center; }
+    /* line 29, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-100.middle {
+      align-self: center; }
+    /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-100.top {
+      align-self: flex-start; }
+    /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-100.bottom {
+      align-self: flex-end; }
+    /* line 41, /Users/zub/Projects/the-good-corner/src/styles/_grid.scss */
+    .row .col-100.stretch {
+      align-self: stretch; }
+
+/* line 1, /Users/zub/Projects/the-good-corner/src/styles/_buttons.scss */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none; }
+  /* line 6, /Users/zub/Projects/the-good-corner/src/styles/_buttons.scss */
+  button:focus {
+    border: none;
+    outline: none; }
+  /* line 11, /Users/zub/Projects/the-good-corner/src/styles/_buttons.scss */
+  button.primary {
+    border: 1px solid #3a5078;
+    background-color: #3a5078;
+    color: white; }
+    /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_buttons.scss */
+    button.primary:hover {
+      color: #3a5078;
+      background-color: white; }
+
+/* line 1, /Users/zub/Projects/the-good-corner/src/styles/_typography.scss */
+.light {
+  font-weight: 100; }
+
+/* line 23, /Users/zub/Projects/the-good-corner/src/styles/application.scss */
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+  /* line 1, /Users/zub/Projects/the-good-corner/src/styles/_banner.scss */
+  .content .banner {
+    background-color: white;
+    color: white; }
+    /* line 6, /Users/zub/Projects/the-good-corner/src/styles/_banner.scss */
+    .content .banner .header {
+      height: 30px;
+      background-color: #3a5078;
+      padding: 0px 10px; }
+    /* line 12, /Users/zub/Projects/the-good-corner/src/styles/_banner.scss */
+    .content .banner .drawer {
+      overflow: hidden;
+      -webkit-transition: height 0.1s ease-out, padding 0.1s ease-out;
+      -moz-transition: height 0.1s ease-out, padding 0.1s ease-out;
+      -o-transition: height 0.1s ease-out, padding 0.1s ease-out;
+      transition: height 0.1s ease-out, padding 0.1s ease-out; }
+      /* line 16, /Users/zub/Projects/the-good-corner/src/styles/_banner.scss */
+      .content .banner .drawer.closed {
+        height: 0px;
+        padding: 0px; }
+      /* line 21, /Users/zub/Projects/the-good-corner/src/styles/_banner.scss */
+      .content .banner .drawer.open {
+        height: 170px;
+        padding: 10px; }
+      /* line 26, /Users/zub/Projects/the-good-corner/src/styles/_banner.scss */
+      .content .banner .drawer textarea {
+        width: 100%;
+        height: 120px; }
+  /* line 34, /Users/zub/Projects/the-good-corner/src/styles/application.scss */
+  .content .items {
+    flex: 1;
+    display: flex;
+    flex-direction: row; }
+    /* line 39, /Users/zub/Projects/the-good-corner/src/styles/application.scss */
+    .content .items > .prout {
+      overflow: auto;
+      flex: 1; }
+    /* line 1, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+    .content .items .card {
+      border-left: 1px solid lightgrey;
+      border-right: 1px solid lightgrey;
+      border-top: 1px solid lightgrey; }
+      /* line 7, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+      .content .items .card:nth-child(2n) {
+        background-color: rgba(212, 212, 212, 0.5); }
+      /* line 11, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+      .content .items .card .thumbnail {
+        width: 170px;
+        height: 130px;
+        overflow: hidden;
+        text-align: center; }
+        /* line 17, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .thumbnail > img {
+          height: 130px; }
+        /* line 21, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .thumbnail.empty {
+          height: 50px;
+          background: url("/images/no-picture-adview.png") no-repeat center; }
+      /* line 27, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+      .content .items .card .infos {
+        height: 130px;
+        padding: 10px;
+        border-left: 1px solid lightgrey; }
+        /* line 33, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .infos > * {
+          margin-bottom: 10px; }
+        /* line 37, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .infos .location, .content .items .card .infos .last-update {
+          color: rgba(35, 39, 41, 0.4);
+          font-size: 0.8em; }
+        /* line 42, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .infos .last-update {
+          position: relative;
+          height: 15px; }
+          /* line 46, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+          .content .items .card .infos .last-update > div {
+            -webkit-transition: opacity 0.1s ease-out;
+            -moz-transition: opacity 0.1s ease-out;
+            -o-transition: opacity 0.1s ease-out;
+            transition: opacity 0.1s ease-out;
+            position: absolute;
+            opacity: 1;
+            top: 0px;
+            right: 0px; }
+            /* line 53, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+            .content .items .card .infos .last-update > div.absolute {
+              opacity: 0; }
+            /* line 57, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+            .content .items .card .infos .last-update > div.relative {
+              opacity: 1; }
+          /* line 63, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+          .content .items .card .infos .last-update:hover > .absolute {
+            opacity: 1; }
+          /* line 67, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+          .content .items .card .infos .last-update:hover > .relative {
+            opacity: 0; }
+        /* line 74, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .infos .title {
+          font-size: 1.2em; }
+        /* line 78, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .infos .price {
+          font-size: 0.9em;
+          font-weight: 100; }
+          /* line 81, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+          .content .items .card .infos .price span {
+            color: white;
+            background-color: #3a5078;
+            padding: 3px 7px 2px 7px;
+            border-radius: 4px; }
+        /* line 90, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .infos .price-and-actions .link {
+          color: lightgrey; }
+          /* line 93, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+          .content .items .card .infos .price-and-actions .link:hover {
+            color: #3a5078; }
+        /* line 99, /Users/zub/Projects/the-good-corner/src/styles/_card.scss */
+        .content .items .card .infos .row:last-child {
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+          padding: 0px 10px; }
+  /* line 47, /Users/zub/Projects/the-good-corner/src/styles/application.scss */
+  .content .footer {
+    height: 50px; }
+
+
+/*# sourceMappingURL=app.css.map*/

@@ -1,0 +1,110 @@
+.card {
+  $light-color: hsla(200, 8%, 15%, 0.4);
+
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+
+  &:nth-child(2n) {
+    background-color: hsla(0, 0%, 83%, 0.5);
+  }
+
+  .thumbnail {
+    width: 170px;
+    height: 130px;
+    overflow: hidden;
+    text-align: center;
+
+    > img {
+      height: 130px;
+    }
+
+    &.empty {
+      height: 50px;
+      background: url("/images/no-picture-adview.png") no-repeat center;
+    }
+  }
+
+  .infos {
+    height: 130px;
+    padding: 10px;
+
+    border-left: 1px solid lightgrey;
+
+    > * {
+      margin-bottom: 10px;
+    }
+
+    .location, .last-update {
+      color: $light-color;
+      font-size: 0.8em;
+    }
+
+    .last-update {
+      position: relative;
+      height: 15px;
+
+      > div {
+        @include animate(opacity);
+        position: absolute;
+        opacity: 1;
+        top: 0px;
+        right: 0px;
+
+        &.absolute {
+          opacity: 0;
+        }
+
+        &.relative {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        > .absolute {
+          opacity: 1;
+        }
+
+        > .relative {
+          opacity: 0;
+        }
+      }
+
+    }
+
+    .title {
+      font-size: 1.2em;
+    }
+
+    .price {
+      font-size: 0.9em;
+      font-weight: 100;
+      span {
+        color: white;
+        background-color: $primary;
+        padding: 3px 7px 2px 7px;
+        border-radius: 4px;
+      }
+    }
+
+    .price-and-actions {
+      .link {
+        color: lightgrey;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+    .row:last-child {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      padding: 0px 10px;
+    }
+
+  }
+
+  border-top: 1px solid lightgrey;
+}

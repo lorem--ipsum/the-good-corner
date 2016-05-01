@@ -1,0 +1,45 @@
+{
+  "name": "the-good-corner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorem--ipsum/the-good-corner.git"
+  },
+  "author": "lorem--ipsum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lorem--ipsum/the-good-corner/issues"
+  },
+  "homepage": "https://github.com/lorem--ipsum/the-good-corner#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cheerio": "^0.20.0",
+    "express": "^4.13.4",
+    "iconv-lite": "^0.4.13",
+    "moment": "^2.13.0",
+    "morgan": "^1.7.0",
+    "q": "^1.4.1",
+    "qwest": "^4.4.2",
+    "react": "~0.14.7",
+    "react-dom": "~0.14.7",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "brunch": "^2.4.0",
+    "auto-reload-brunch": "^2.0.0",
+    "babel-brunch": "~6.0.0",
+    "babel-preset-es2015": "~6.3.13",
+    "babel-preset-react": "~6.3.13",
+    "clean-css-brunch": "^2.0.0",
+    "css-brunch": "^2.0.0",
+    "javascript-brunch": "^2.0.0",
+    "uglify-js-brunch": "^2.0.0",
+    "sass-brunch": "^2.6.2"
+  }
+}

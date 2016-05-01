@@ -1,0 +1,21 @@
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  &.primary {
+    border: 1px solid $primary;
+    background-color: $primary;
+    color: white;
+
+    &:hover {
+      color: $primary;
+      background-color: white;
+    }
+  }
+}

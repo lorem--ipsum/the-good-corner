@@ -1,0 +1,50 @@
+.row {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  @mixin col($value) {
+    .col-#{$value} {
+      flex: 1;
+      flex-grow: 0;
+      // flex-shrink: 0;
+      box-sizing: border-box;
+      position: relative;
+      flex-basis: $value * 1%;
+
+      // Horizontal alignment
+      &.left {
+        text-align: left;
+      }
+
+      &.right {
+        text-align: right;
+      }
+
+      &.center {
+        text-align: center;
+      }
+
+      // Vertical alignment
+      &.middle {
+        align-self: center;
+      }
+
+      &.top {
+        align-self: flex-start;
+      }
+
+      &.bottom {
+        align-self: flex-end;
+      }
+
+      &.stretch {
+        align-self: stretch;
+      }
+    }
+  }
+
+  @for $i from 0 through 10 {
+    @include col(($i*10));
+  }
+}

@@ -1,0 +1,31 @@
+.banner {
+  background-color: white;
+
+  color: white;
+
+  .header {
+    height: 30px;
+    background-color: $primary;
+    padding: 0px 10px;
+  }
+
+  .drawer {
+    overflow: hidden;
+    @include animate(height, padding);
+
+    &.closed {
+      height: 0px;
+      padding: 0px;
+    }
+
+    &.open {
+      height: 170px;
+      padding: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+    }
+  }
+}
