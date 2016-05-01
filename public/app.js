@@ -220,28 +220,22 @@ var App = function (_React$Component) {
         return;
       }
 
+      var itemsByUrl = {};
       var urls = items.map(function (item) {
+        itemsByUrl[item.url] = item;
         return item.url;
-      }).slice(0, 5);
+      });
 
       var that = this;
 
       _qwest2.default.post('/details', { urls: urls }).then(function (xhr, response) {
-        console.log(response);
-        var itemsByUrl = {};
         response.data.forEach(function (item) {
-          itemsByUrl[item.url] = item;
-        });
-
-        var newItems = that.state.items.map(function (item) {
           if (itemsByUrl[item.url]) {
-            item.address = itemsByUrl[item.url].address;
+            itemsByUrl[item.url].address = item.address;
           }
-          return item;
         });
 
-        console.log(newItems);
-        that.setState({ items: newItems });
+        that.setState({ items: that.state.items });
       });
     }
   }, {
@@ -286,7 +280,6 @@ var App = function (_React$Component) {
             'div',
             { className: 'prout' },
             this.state.items.map(function (item, i) {
-              console.log(item.address);
               return _react2.default.createElement(_Card2.default, { item: item, key: item.id + item.address });
             })
           )
