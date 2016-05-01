@@ -166,13 +166,17 @@ var _qwest = require('qwest');
 
 var _qwest2 = _interopRequireDefault(_qwest);
 
+var _Banner = require('./Banner.jsx');
+
+var _Banner2 = _interopRequireDefault(_Banner);
+
 var _Card = require('./Card.jsx');
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _Banner = require('./Banner.jsx');
+var _Loader = require('./Loader.jsx');
 
-var _Banner2 = _interopRequireDefault(_Banner);
+var _Loader2 = _interopRequireDefault(_Loader);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -191,17 +195,28 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
     _this.state = {
-      items: []
+      items: [],
+      queries: ['https://www.leboncoin.fr/locations/offres/bretagne/finistere/?th=1&mrs=600&mre=950&ret=1', 'https://www.leboncoin.fr/motos/offres/bretagne/finistere/29/?th=1&pe=7&ccs=600']
     };
     return _this;
   }
 
   _createClass(App, [{
+    key: 'queriesChanged',
+    value: function queriesChanged(queries) {
+      this.setState({ queries: queries }, this.loadData);
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      // var queries = this.props.queries;
+      this.loadData();
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData(queries) {
+      this.setState({ isLoading: true });
 
-      var queries = ['https://www.leboncoin.fr/locations/offres/bretagne/finistere/?th=1&mrs=600&mre=950&ret=1', 'https://www.leboncoin.fr/motos/offres/bretagne/finistere/29/?th=1&pe=7&ccs=600'];
+      var queries = this.state.queries;
 
       if (!queries || queries.length === 0) {
         this.state.items = [];
@@ -212,6 +227,7 @@ var App = function (_React$Component) {
 
       _qwest2.default.post('/results', { queries: queries }).then(function (xhr, response) {
         that.setState({
+          isLoading: false,
           items: response.data.reduce(function (a, b) {
             return a.concat(b.results);
           }, []).map(function (item) {
@@ -229,7 +245,7 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'content' },
-        _react2.default.createElement(_Banner2.default, { queries: this.state.queries }),
+        _react2.default.createElement(_Banner2.default, { queries: this.state.queries, onChange: this.queriesChanged.bind(this) }),
         _react2.default.createElement(
           'div',
           { className: 'items' },
@@ -237,11 +253,12 @@ var App = function (_React$Component) {
             'div',
             { className: 'prout' },
             this.state.items.map(function (item, i) {
-              return _react2.default.createElement(_Card2.default, { item: item, key: i });
+              return _react2.default.createElement(_Card2.default, { item: item, key: item.id });
             })
           )
         ),
-        _react2.default.createElement('div', { className: 'footer' })
+        _react2.default.createElement('div', { className: 'footer' }),
+        _react2.default.createElement(_Loader2.default, { isLoading: this.state.isLoading })
       );
     }
   }]);
@@ -282,7 +299,8 @@ var Banner = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Banner).call(this, props));
 
     _this.state = {
-      isOpen: true
+      isOpen: false,
+      tempQueries: []
     };
     return _this;
   }
@@ -291,6 +309,34 @@ var Banner = function (_React$Component) {
     key: 'toggle',
     value: function toggle() {
       this.setState({ isOpen: !this.state.isOpen });
+    }
+  }, {
+    key: 'handleQueriesChange',
+    value: function handleQueriesChange(event) {
+      this.setState({ tempQueries: event.target.value.split('\n') });
+    }
+  }, {
+    key: 'onSave',
+    value: function onSave() {
+      this.props.onChange(this.state.tempQueries);
+      this.setState({ isOpen: false });
+    }
+  }, {
+    key: 'onCancel',
+    value: function onCancel() {
+      this.setState({ isOpen: false });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var queries = this.props.queries;
+
+      if (!queries || queries.length === 0) {
+        this.setState({ tempQueries: [] });
+        return;
+      }
+
+      this.setState({ tempQueries: queries });
     }
   }, {
     key: 'render',
@@ -324,7 +370,10 @@ var Banner = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: drawerClasses.join(' ') },
-          _react2.default.createElement('textarea', null),
+          _react2.default.createElement('textarea', {
+            value: this.state.tempQueries.join('\n'),
+            onChange: this.handleQueriesChange.bind(this)
+          }),
           _react2.default.createElement(
             'div',
             { className: 'row buttons' },
@@ -333,12 +382,12 @@ var Banner = function (_React$Component) {
               { className: 'col-100 right' },
               _react2.default.createElement(
                 'button',
-                { className: 'secondary light' },
+                { className: 'secondary light', onClick: this.onCancel.bind(this) },
                 'Cancel'
               ),
               _react2.default.createElement(
                 'button',
-                { className: 'primary light' },
+                { className: 'primary light', onClick: this.onSave.bind(this) },
                 'Save'
               )
             )
@@ -387,12 +436,14 @@ var Card = function (_React$Component) {
   _createClass(Card, [{
     key: 'render',
     value: function render() {
+      var item = this.props.item;
+
       var thumbnailClasses = ['thumbnail'];
-      if (!this.props.item.thumbnail) {
+      if (!item.thumbnail) {
         thumbnailClasses.push('empty');
       }
 
-      var lastUpdate = this.props.item.lastUpdate;
+      var lastUpdate = item.lastUpdate;
 
       return _react2.default.createElement(
         'div',
@@ -402,11 +453,28 @@ var Card = function (_React$Component) {
           { className: 'row' },
           _react2.default.createElement(
             'div',
-            { className: 'col-20 middle' },
+            { className: 'col-20 right' },
             _react2.default.createElement(
               'div',
               { className: thumbnailClasses.join(' ') },
-              _react2.default.createElement('img', { src: this.props.item.thumbnail })
+              _react2.default.createElement(
+                'a',
+                { target: '_blank', className: 'link', href: item.url },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'outer' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'inner' },
+                    _react2.default.createElement('img', { src: item.thumbnail })
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: 'imageCount' },
+                item.imageCount
+              )
             )
           ),
           _react2.default.createElement(
@@ -421,7 +489,7 @@ var Card = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'location' },
-                  this.props.item.location
+                  item.location
                 )
               ),
               _react2.default.createElement(
@@ -446,7 +514,7 @@ var Card = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'title' },
-              this.props.item.title
+              item.title
             ),
             _react2.default.createElement(
               'div',
@@ -460,7 +528,7 @@ var Card = function (_React$Component) {
                   _react2.default.createElement(
                     'span',
                     null,
-                    this.props.item.price
+                    item.price
                   )
                 )
               ),
@@ -469,7 +537,7 @@ var Card = function (_React$Component) {
                 { className: 'col-50 right' },
                 _react2.default.createElement(
                   'a',
-                  { target: '_blank', className: 'link', href: this.props.item.url },
+                  { target: '_blank', className: 'link', href: item.url },
                   _react2.default.createElement('i', { className: 'fa fa-external-link' })
                 )
               )
@@ -484,6 +552,63 @@ var Card = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Card;
+});
+
+;require.register("components/Loader.jsx", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Loader = function (_React$Component) {
+  _inherits(Loader, _React$Component);
+
+  function Loader(props) {
+    _classCallCheck(this, Loader);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Loader).call(this, props));
+  }
+
+  _createClass(Loader, [{
+    key: 'render',
+    value: function render() {
+      var classNames = ['loader'];
+
+      if (this.props.isLoading) {
+        classNames.push('visible');
+      }
+
+      return _react2.default.createElement(
+        'div',
+        { className: classNames.join(' ') },
+        _react2.default.createElement(
+          'div',
+          { className: 'label light' },
+          'Chargement...'
+        )
+      );
+    }
+  }]);
+
+  return Loader;
+}(_react2.default.Component);
+
+exports.default = Loader;
 });
 
 ;require.register("initialize.js", function(exports, require, module) {

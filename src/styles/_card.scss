@@ -4,23 +4,54 @@
   border-left: 1px solid lightgrey;
   border-right: 1px solid lightgrey;
 
+  padding: 40px 0px;
+
   &:nth-child(2n) {
     background-color: hsla(0, 0%, 83%, 0.5);
   }
 
   .thumbnail {
-    width: 170px;
-    height: 130px;
+    display: inline-block;
     overflow: hidden;
     text-align: center;
+    position: relative;
 
-    > img {
-      height: 130px;
+    .outer {
+      overflow: hidden;
+    }
+
+    .inner {
+      display: inline-block;
+      position: relative;
+      right: -50%;
+    }
+
+    img {
+      position: relative;
+      left: -50%;
+    }
+
+    span.imageCount {
+      pointer-events: none;
+      font-size: 0.8em;
+      position: absolute;
+      bottom: 5px;
+      left: 6px;
+      color: $primary;
+      border: 1px solid $primary;
+      background-color: white;
+      padding: 1px 4px 0px 5px;
+      border-radius: 2px;
     }
 
     &.empty {
+      width: 170px;
       height: 50px;
       background: url("/images/no-picture-adview.png") no-repeat center;
+
+      span.imageCount {
+        opacity: 0;
+      }
     }
   }
 

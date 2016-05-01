@@ -19,6 +19,7 @@ $primary-light: hsla(219, 35%, 35%, 0.1);
 @import './grid';
 @import './buttons';
 @import './typography';
+@import './loader';
 
 .content {
   width: 100%;
@@ -45,7 +46,7 @@ $primary-light: hsla(219, 35%, 35%, 0.1);
   }
 
   .footer {
-    height: 50px;
+    height: 0px;
   }
 }
 

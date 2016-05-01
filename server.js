@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
 var morgan = require('morgan')
+var validUrl = require('valid-url');
 var q = require('q');
 
 var moment = require('moment');
@@ -76,6 +77,10 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 app.use(express.static(__dirname + '/public'));
 
+var validateUri = function(suspect) {
+  return validUrl.isUri(suspect) && suspect.search('https://www.leboncoin.fr/') === 0;
+};
+
 var parseDate = function(string) {
   var bits = string.split(/\s*,\s*/);
 
@@ -130,13 +135,18 @@ var getPromiseForURL = function(url) {
     $('.mainList .list_item').filter(function() {
       var element = $(this);
 
+      var dateElement = element.find('.item_absolute p');
+      dateElement.find('.emergency').remove(); // removes the "Urgent" element...
+
       results.push({
         thumbnail: element.find('.item_imagePic .lazyload').attr('data-imgsrc'),
         title: element.find('.item_infos .item_title').text().replace(/^\s+|\s+$/g,''),
         url: element.attr('href'),
+        imageCount: +element.find('.item_imageNumber span').text(),
+        id: element.attr('href').split(/^.*\/(\d+)\.htm.*$/)[1],
         location: element.find('.item_supp').eq(1).text().replace(/^\s+|\s+$/g,'').replace(/(\s|\n|\r)*\/(.|\n|\r)*$/, ''),
         price: element.find('.item_price').text().replace(/^\s+|\s+$/g,''),
-        lastUpdate: parseDate(element.find('.item_absolute p').text().replace(/^\s+|\s+$/g,''))
+        lastUpdate: parseDate(dateElement.text().replace(/^\s+|\s+$/g,''))
       });
     });
 
@@ -162,9 +172,13 @@ app.post('/results', function(req, res) {
     return;
   }
 
-  q.all(queries.map(getPromiseForURL)).then(
+  var promises = queries
+    .filter(validateUri)
+    .map(getPromiseForURL);
+
+  q.all(promises).then(
     function(results) {
-      redneckCache = results;
+      // redneckCache = results;
       res.json({data: results});
     },
     function(reason) {res.status(503).json({message: reason});}

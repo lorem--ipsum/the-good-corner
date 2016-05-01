@@ -4,12 +4,37 @@ export default class Banner extends React.Component {
     super(props);
 
     this.state = {
-      isOpen: true
+      isOpen: false,
+      tempQueries: []
     };
   }
 
   toggle() {
     this.setState({isOpen: !this.state.isOpen});
+  }
+
+  handleQueriesChange(event) {
+    this.setState({tempQueries: event.target.value.split('\n')});
+  }
+
+  onSave() {
+    this.props.onChange(this.state.tempQueries);
+    this.setState({isOpen: false});
+  }
+
+  onCancel() {
+    this.setState({isOpen: false});
+  }
+
+  componentDidMount() {
+    var queries = this.props.queries;
+
+    if (!queries || queries.length === 0) {
+      this.setState({tempQueries: []});
+      return;
+    }
+
+    this.setState({tempQueries: queries});
   }
 
   render() {
@@ -31,11 +56,14 @@ export default class Banner extends React.Component {
           </div>
         </div>
         <div className={drawerClasses.join(' ')}>
-          <textarea></textarea>
+          <textarea
+            value={this.state.tempQueries.join('\n')}
+            onChange={this.handleQueriesChange.bind(this)}
+          ></textarea>
           <div className="row buttons">
             <div className="col-100 right">
-              <button className="secondary light">Cancel</button>
-              <button className="primary light">Save</button>
+              <button className="secondary light" onClick={this.onCancel.bind(this)}>Cancel</button>
+              <button className="primary light" onClick={this.onSave.bind(this)}>Save</button>
             </div>
           </div>
         </div>

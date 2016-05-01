@@ -1,0 +1,27 @@
+.loader {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+
+  @include animate(height);
+  height: 0px;
+
+  z-index: 1000;
+  background-color: hsla(200, 8%, 15%, 0.2);
+
+  &.visible {
+    height: 100%;
+  }
+
+  .label {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    font-size: 2em;
+    color: grey;
+  }
+}
